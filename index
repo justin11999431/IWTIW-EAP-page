@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to My Site!</title>
+</head>
+<body>
+  <h1>Hello, GitHub Pages!</h1>
+  <p>This is my first website.</p>
+</body>
+</html>
 import React from 'react';
 
 // Define the JSON data directly within the component for demonstration
