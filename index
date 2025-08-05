@@ -1,10 +1,172 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Welcome to My Site!</title>
-</head>
-<body>
-  <h1>Hello, GitHub Pages!</h1>
-  <p>This is my first website.</p>
-</body>
-</html>
+import React from 'react';
+
+// Define the JSON data directly within the component for demonstration
+const pageData = {
+  "pageTitle": "Comprehensive Wellness Ecosystem",
+  "heroSection": {
+    "type": "imagePlaceholder",
+    "icon": "flower-petal-shape",
+    "description": "A central diagram representing the six interconnected wellness services.",
+    "services": [
+      {
+        "name": "Virtual Primary Care",
+        "icon": "stethoscope", // Icon data is kept in JSON but not rendered
+        "description": "Connecting employees with physicians for routine care, preventive services, and chronic condition management.",
+        "position": "top-left"
+      },
+      {
+        "name": "Mental Health Support",
+        "icon": "earbuds",
+        "description": "Confidential in the moment access to therapists and psychiatrists for emotional and psychological wellbeing.",
+        "position": "top-right"
+      },
+      {
+        "name": "Prescription Coverage",
+        "icon": "pills",
+        "description": "Cost-effective medication management through partner pharmacies and discount programs.",
+        "position": "mid-left"
+      },
+      {
+        "name": "Musculoskeletal Care",
+        "icon": "bone",
+        "description": "Specialized treatment for back, joint, and muscle conditions affecting workplace comfort and productivity.",
+        "position": "mid-right"
+      },
+      {
+        "name": "TeleVet Pet Care",
+        "icon": "syringe",
+        "description": "Supporting the complete family by providing veterinary care for beloved pets, reducing stress and worry.",
+        "position": "bottom-left"
+      },
+      {
+        "name": "Weight Management",
+        "icon": "scale",
+        "description": "Structured programs including GLP-1 options for sustainable weight loss and improved health outcomes.",
+        "position": "bottom-right"
+      }
+    ]
+  },
+  "footerSection": {
+    "text": "The iWILL 'til i'mWELL Employee Assistance Program (EAP) provides Telemedicine and confidential Telecounseling for all employees, addressing issues like marital, family, emotional, and substance abuse challenges. Here are some of our most prominent services for companies/organizations:",
+    "style": {
+      "backgroundColor": "#ffffff",
+      "textColor": "#666666",
+      "fontStyle": "italic"
+    }
+  },
+  "styling": {
+    "body": {
+      "backgroundColor": "#f8f9fa",
+      "fontFamily": "Inter, sans-serif"
+    },
+    "header": {
+      "fontSize": "3em",
+      "fontWeight": "bold",
+      "color": "#4a235a",
+      "textAlign": "center",
+      "margin": "20px 0"
+    },
+    "serviceBox": {
+      "display": "flex",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "textAlign": "center",
+      "padding": "15px",
+      "color": "#666666"
+    }
+  }
+};
+
+const App = () => {
+  const { pageTitle, heroSection, footerSection, styling } = pageData;
+
+  // Tailwind CSS classes based on JSON styling and new color palette
+  // Further reduced vertical margin for header
+  const headerClasses = `text-5xl font-bold text-[#604478] text-center my-2 md:my-4 lg:my-6 px-4`;
+  // Further reduced top margin for footer, removed italic, and adjusted text size for h4
+  const footerClasses = `text-[#212529] text-center max-w-4xl mx-auto mt-4 md:mt-6 lg:mt-8 px-4 pb-8 text-base md:text-lg font-normal`;
+  const bodyBgColor = styling.body.backgroundColor;
+
+  // Updated hero image URL
+  const heroImageUrl = "https://private-user-images.githubusercontent.com/224313597/474681194-859d7050-c7ff-4233-ab0c-e2639d2857d2.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ0MjIwNDksIm5iZiI6MTc1NDQyMTc0OSwicGF0aCI6Ii8yMjQzMTM1OTcvNDc0NjgxMTk0LTg1OWQ3MDUwLWM3ZmYtNDIzMy1hYjBjLWUyNjM5ZDI4NTdkMi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODA1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgwNVQxOTIyMjlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ZWU0NzBhZGJiZDI1ZGYwYjE2ZDBmYmVkNDA4ZDMxNjRmZWViZjQyMDhjNDY3NjE1MjYyMTkzN2MxZWFhY2Q4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.194OgiX78b9UbJlmHZA5vv6MPclnu58RUwvScuualmk";
+  const placeholderImageUrl = "https://placehold.co/250x250/876E98/8638D7?text=Hero+Image"; // Placeholder for error
+
+  return (
+    <div className={`min-h-screen ${bodyBgColor === '#f8f9fa' ? 'bg-gray-50' : ''} font-inter flex flex-col items-center p-4`}>
+      {/* Page Title */}
+      <h1 className={headerClasses}>
+        {pageTitle}
+      </h1>
+
+      {/* Hero Section - Image Layout */}
+      <div className="relative w-full max-w-5xl aspect-[16/9] md:aspect-[4/3] lg:aspect-[3/2] mx-auto mb-4 md:mb-6 lg:mb-8 flex items-center justify-center">
+        {/* Central Hero Image */}
+        <img
+          src={heroImageUrl}
+          alt="Comprehensive Wellness Ecosystem Diagram"
+          className="absolute w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain rounded-full shadow-lg"
+          onError={(e) => { e.target.onerror = null; e.target.src = placeholderImageUrl; }}
+        />
+
+        {/* Service Boxes */}
+        {heroSection.services.map((service, index) => {
+          let positionClasses = "";
+          // Adjust positioning for responsiveness to closely surround the hero image
+          // On small screens, stack them. On larger screens, use absolute positioning.
+          switch (service.position) {
+            case "top-left":
+              positionClasses = "md:absolute md:top-[10%] md:left-[10%]";
+              break;
+            case "top-right":
+              positionClasses = "md:absolute md:top-[10%] md:right-[10%]";
+              break;
+            case "mid-left":
+              positionClasses = "md:absolute md:top-1/2 md:-translate-y-1/2 md:left-[5%]";
+              break;
+            case "mid-right":
+              positionClasses = "md:absolute md:top-1/2 md:-translate-y-1/2 md:right-[5%]";
+              break;
+            case "bottom-left":
+              positionClasses = "md:absolute md:bottom-[10%] md:left-[10%]";
+              break;
+            case "bottom-right":
+              positionClasses = "md:absolute md:bottom-[10%] md:right-[10%]";
+              break;
+            default:
+              break;
+          }
+
+          return (
+            <div
+              key={index}
+              className={`
+                ${positionClasses}
+                w-full md:w-1/3 lg:w-1/4 xl:w-1/5
+                p-4 md:p-6
+                mb-6 md:mb-0
+                flex flex-col items-center text-center
+                text-[#212529]
+                rounded-xl
+                bg-white
+                shadow-md
+                md:bg-transparent md:shadow-none
+                md:max-w-[280px]
+              `}
+            >
+              <h3 className="font-semibold text-lg md:text-xl text-[#7C61B1] mb-2">{service.name}</h3>
+              <p className="text-sm md:text-base leading-relaxed">{service.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Footer Section */}
+      <h4 className={footerClasses}>
+        {footerSection.text}
+      </h4>
+    </div>
+  );
+};
+
+export default App;
